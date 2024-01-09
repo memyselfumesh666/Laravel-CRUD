@@ -15,12 +15,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     @guest
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Login</a>
-                    </li>
-                    <li class="nav-item">
+                    </li> -->
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('register-user') }}">Register</a>
-                    </li>
+                    </li> -->
                     @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('companies.index') }}">Company</a>
@@ -36,6 +36,22 @@
             </div>
         </div>
     </nav>
+        @auth
+        <table class="table table-bordered">
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            @foreach ($datas as $key=>$data)
+            <tr>
+                <td>{{$key+1}}</td>
+                <td>{{$data->name}}</td>
+                <td>{{$data->email}}</td>
+            </tr>
+            @endforeach
+        </table>
+        @endauth
     @yield('content')
 </body>
 </html>

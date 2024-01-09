@@ -12,9 +12,10 @@ class CustomAuthController extends Controller
 {
 
     public function index()
-    {
+    {       
         if(Auth::check()){
-            return view('auth.dashboard');
+            $data      = User::get();
+            return view('auth.dashboard',['datas' => $data]);
         }
         return view('auth.login');
     }  
@@ -66,7 +67,8 @@ class CustomAuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
-            return view('auth.dashboard');
+            $data      = User::get();
+            return view('auth.dashboard',['datas' => $data]);
         }
   
         return redirect("login")->withSuccess('You are not allowed to access');

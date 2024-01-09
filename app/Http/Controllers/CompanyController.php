@@ -19,10 +19,10 @@ class CompanyController extends Controller
     { 
         if(Auth::check())
         {
-            $companies = Company::latest()->paginate(5);
+            $companies = Company::latest()->paginate(10);
   
             return view('companies.index',compact('companies'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 10);
         }
         return redirect("login")->withSuccess('You are not allowed to access');        
     }

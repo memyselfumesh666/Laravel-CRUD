@@ -20,10 +20,10 @@ class EmployeeController extends Controller
     { 
         if(Auth::check())
         {
-            $employees = Employee::latest()->paginate(5);   
+            $employees = Employee::latest()->paginate(10);   
                         
             return view('employees.index',compact('employees'))
-                ->with('i', (request()->input('page', 1) - 1) * 5);
+                ->with('i', (request()->input('page', 1) - 1) * 10);
         }
         return redirect("login")->withSuccess('You are not allowed to access');
     }
